@@ -6,6 +6,7 @@ const person = (props) => {
   // if (rnd >= 0.7) {
   //   throw new Error('There is an error.')
   // }
+  console.log('[Person.js] rendering...')
 
   return (
     <div className={styles.Person}>
