@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Person from './Person/Person';
 
-class Persons extends Component {
+class Persons extends PureComponent {
   // we don't do anything to state, this will cause a warning
   // static getDerivedStateFromProps(props, state) {
   //   console.log('[Persons.js] getDerivedStateFromProps');
@@ -13,10 +13,16 @@ class Persons extends Component {
   //   console.log('[Persons.js] componentWillReceiveProps');
   // }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log('[Persons.js] shouldComponentUpdate');
-    return true;
-  }
+  // Bad code below. Instead of checking all props for a change
+  // extend PureComponent, which does that by default
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log('[Persons.js] shouldComponentUpdate');
+  //   return (
+  //     nextProps.persons !== this.props.persons ||
+  //     nextProps.changed !== this.props.changed ||
+  //     nextProps.clicked !== this.props.clicked
+  //   );
+  // }
 
   getSnapshotBeforeUpdate(prevProps, prevState) {
     console.log('[Persons.js] getSnapshotBeforeUpdate');
